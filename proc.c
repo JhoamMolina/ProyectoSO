@@ -13,8 +13,29 @@ struct {
 } ptable;
 
 static struct proc *initproc;
-
 int nextpid = 1;
+int countCalls = 0;
+int countFork = 0;
+int countExit = 0;
+int countWait = 0;
+int countPipe = 0;
+int countRead = 0;
+int countKill = 0;
+int countExec = 0;
+int countFstat = 0;
+int countChdir = 0;
+int countDup = 0;
+int countGetpid = 0;
+int countSbrk = 0;
+int countSleep = 0;
+int countUptime = 0;
+int countOpen = 0;
+int countWrite = 0;
+int countMknod = 0;
+int countUnlink = 0;
+int countLink = 0;
+int countMkdir = 0;
+int countClose = 0;
 extern void forkret(void);
 extern void trapret(void);
 
@@ -532,3 +553,31 @@ procdump(void)
     cprintf("\n");
   }
 }
+int
+count()
+{
+	cprintf("Se han realizado %d llamadas al sistema\n", countCalls);
+        cprintf("Fork --- %d\n", countFork);
+	cprintf("Exit --- %d\n", countExit);
+	cprintf("Wait --- %d\n", countWait);
+	cprintf("Pipe --- %d\n", countPipe);
+	cprintf("Read --- %d\n", countRead);
+	cprintf("Kill --- %d\n", countKill);
+	cprintf("Exec --- %d\n", countExec);
+	cprintf("Fstat --- %d\n", countFstat);
+	cprintf("Chdir --- %d\n", countChdir);
+	cprintf("Dup --- %d\n", countDup);
+	cprintf("Getpid --- %d\n", countGetpid);
+	cprintf("Sbrk --- %d\n", countSbrk);
+	cprintf("Sleep --- %d\n", countSleep);
+	cprintf("Uptime --- %d\n", countUptime);
+	cprintf("Open --- %d\n", countOpen);
+	cprintf("Write --- %d\n", countWrite);
+	cprintf("Mknod --- %d\n", countMknod);
+	cprintf("Unlink --- %d\n", countUnlink);
+	cprintf("Link --- %d\n", countLink);
+	cprintf("Mkdir --- %d\n", countMkdir);
+	cprintf("Close --- %d\n", countClose);
+	return 22;
+}
+

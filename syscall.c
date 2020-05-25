@@ -103,6 +103,29 @@ extern int sys_unlink(void);
 extern int sys_wait(void);
 extern int sys_write(void);
 extern int sys_uptime(void);
+extern int countCalls;
+extern int countFork;
+extern int countExit;
+extern int countWait;
+extern int countPipe;
+extern int countRead;
+extern int countKill;
+extern int countExec;
+extern int countFstat;
+extern int countChdir;
+extern int countDup;
+extern int countGetpid;
+extern int countSbrk;
+extern int countSleep;
+extern int countUptime;
+extern int countOpen;
+extern int countWrite;
+extern int countMknod;
+extern int countUnlink;
+extern int countLink;
+extern int countMkdir;
+extern int countClose;
+extern int sys_count(void);
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -126,15 +149,83 @@ static int (*syscalls[])(void) = {
 [SYS_link]    sys_link,
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
+[SYS_count]   sys_count,
 };
 
 void
 syscall(void)
 {
   int num;
+ 
   struct proc *curproc = myproc();
-
   num = curproc->tf->eax;
+if(num == 1){
+	countFork++;
+	countCalls++;
+}else if(num == 2){
+	countExit++;
+	countCalls++;
+}else if(num == 3){
+	countWait++;
+	countCalls++;
+}else if(num == 4){
+	countPipe++;
+	countCalls++;
+}else if(num == 5){
+	countRead++;
+	countCalls++;
+}else if(num == 6){
+        countKill++;
+        countCalls++;
+}else if(num == 7){
+        countExec++;
+        countCalls++;
+}else if(num == 8){
+        countFstat++;
+        countCalls++;
+}else if(num == 9){
+        countChdir++;
+        countCalls++;
+}else if(num == 10){
+        countDup++;
+        countCalls++;
+}else if(num == 11){
+        countGetpid++;
+        countCalls++;
+}else if(num == 12){
+        countSbrk++;
+        countCalls++;
+}else if(num == 13){
+        countSleep++;
+        countCalls++;
+}else if(num == 14){
+        countUptime++;
+        countCalls++;
+}else if(num == 15){
+        countOpen++;
+        countCalls++;
+}else if(num == 16){
+        countWrite++;
+        countCalls++;
+}else if(num == 17){
+        countMknod++;
+        countCalls++;
+}else if(num == 18){
+        countUnlink++;
+        countCalls++;
+}else if(num == 19){
+        countLink++;
+        countCalls++;
+}else if(num == 20){
+        countMkdir++;
+        countCalls++;
+}else if(num == 21){
+        countClose++;
+        countCalls++;
+}else if(num == 22){
+        countCalls++;
+}else {countCalls = countCalls + 0;
+}
   if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
     curproc->tf->eax = syscalls[num]();
   } else {
