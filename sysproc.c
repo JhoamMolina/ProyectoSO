@@ -93,5 +93,16 @@ sys_uptime(void)
 int
 sys_count(void)
 {
-	return count();
+  return count();
+}
+
+//sys_date
+int
+sys_date(void)
+{
+  struct rtcdate *r;
+  if(argptr(0, (void*)&r, sizeof(r)) < 0)
+    return -1;
+  cmostime(r);
+  return 0;
 }
