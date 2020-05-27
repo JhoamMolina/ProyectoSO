@@ -24,7 +24,7 @@ char* sbrk(int);
 int sleep(int);
 int uptime(void);
 int count(void);
-int date(struct rtcdate *r);
+int countPar(int);
 
 // ulib.c
 int stat(const char*, struct stat*);

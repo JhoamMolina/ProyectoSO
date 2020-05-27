@@ -13,7 +13,9 @@ struct {
 } ptable;
 
 static struct proc *initproc;
+
 int nextpid = 1;
+
 int countCalls = 0;
 int countFork = 0;
 int countExit = 0;
@@ -36,6 +38,7 @@ int countUnlink = 0;
 int countLink = 0;
 int countMkdir = 0;
 int countClose = 0;
+
 extern void forkret(void);
 extern void trapret(void);
 
@@ -553,6 +556,7 @@ procdump(void)
     cprintf("\n");
   }
 }
+
 int
 count()
 {
@@ -581,3 +585,53 @@ count()
 	return 22;
 }
 
+int
+countPar(int num)
+{
+	if(num == 1){
+		cprintf("Fork --- %d\n", countFork);
+	}else if(num == 2){
+		cprintf("Exit --- %d\n", countExit);
+	}else if(num == 3){
+		cprintf("Wait --- %d\n", countWait);
+	}else if(num == 4){
+		cprintf("Pipe --- %d\n", countPipe);
+	}else if(num == 5){
+		cprintf("Read --- %d\n", countRead);
+	}else if(num == 6){
+        	cprintf("Kill --- %d\n", countKill);
+	}else if(num == 7){
+        	cprintf("Exec --- %d\n", countExec);
+	}else if(num == 8){
+        	cprintf("Fstat --- %d\n", countFstat);
+	}else if(num == 9){
+        	cprintf("Chdir --- %d\n", countChdir);
+	}else if(num == 10){
+        	cprintf("Dup --- %d\n", countDup);
+	}else if(num == 11){
+        	cprintf("Getpid --- %d\n", countGetpid);
+	}else if(num == 12){
+        	cprintf("Sbrk --- %d\n", countSbrk);
+	}else if(num == 13){
+        	cprintf("Sleep --- %d\n", countSleep);
+	}else if(num == 14){
+        	cprintf("Uptime --- %d\n", countUptime);
+	}else if(num == 15){
+        	cprintf("Open --- %d\n", countOpen);
+	}else if(num == 16){
+        	cprintf("Write --- %d\n", countWrite);
+	}else if(num == 17){
+        	cprintf("Mknod --- %d\n", countMknod);
+	}else if(num == 18){
+        	cprintf("Unlink --- %d\n", countUnlink);
+	}else if(num == 19){
+        	cprintf("Link --- %d\n", countLink);
+	}else if(num == 20){
+        	cprintf("Mkdir --- %d\n", countMkdir);
+	}else if(num == 21){
+        	cprintf("Close --- %d\n", countClose);
+	}else if(num == 22){
+        	cprintf("Close --- %d\n", countCalls);
+	}
+	return 23;
+}

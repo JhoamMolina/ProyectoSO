@@ -96,13 +96,12 @@ sys_count(void)
   return count();
 }
 
-//sys_date
 int
-sys_date(void)
+sys_countPar(void)
 {
-  struct rtcdate *r;
-  if(argptr(0, (void*)&r, sizeof(r)) < 0)
+  int num;
+
+  if(argint(0, &num) < 0)
     return -1;
-  cmostime(r);
-  return 0;
+  return countPar(num);
 }
