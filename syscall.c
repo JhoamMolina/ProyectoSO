@@ -129,6 +129,7 @@ extern int countLink;
 extern int countMkdir;
 extern int countClose;
 extern int sys_count(void);
+extern int sys_countPar(void);
 
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
@@ -154,6 +155,7 @@ static int (*syscalls[])(void) = {
 [SYS_close]   sys_close,
 [SYS_count]   sys_count,
 [SYS_date]    sys_date,
+[SYS_countPar]   sys_countPar,
 };
 
 void

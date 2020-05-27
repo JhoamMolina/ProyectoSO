@@ -106,3 +106,13 @@ sys_date(void)
   cmostime(r);
   return 0;
 }
+
+int
+sys_countPar(void)
+{
+  int num;
+
+  if(argint(0, &num) < 0)
+    return -1;
+  return countPar(num);
+}
