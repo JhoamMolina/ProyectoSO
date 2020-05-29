@@ -2,10 +2,11 @@
 #include "user.h"
 #include "stat.h"
 #include "date.h"
-//#include <stdio.h>
+
 int
 main(int argc, char *argv[])
 {
+  //Hora actual del sistema...
   struct rtcdate r;
 
   if (date(&r)) {
@@ -22,13 +23,16 @@ main(int argc, char *argv[])
   else {
    h = aux;
   }
-  // su codigo debe imprimir el tiempo en el formato que desee...
+
+  // Tiempo uptime...
   int ticks = uptime();
-  int day = ticks / 86400;
-  int hour = (ticks % 86400) / 3600;
-  int minute = (ticks % 3600) / 60;
-  /* Mostramos algunos valores interesantes contenidos en la estructura sysinfo. */
-  printf(2,"%d:%d:%d up %d days, %d, %d:%d,",h,m,s,day,ticks,hour,minute);
+  //int second = (ticks / 75) % 60;	//Valores asumiendo que son 75 ticks por cada segundo aprox...
+  int minute = (ticks / 4500) % 60;
+  int hour = (ticks / 270000) % 60;
+  int day = (ticks / 6480000) % 24;
+
+  //Se imprime el formato del comando uptime...
+  printf(2,"%d:%d:%d up %d days, %d:%d,",h,m,s,day,hour,minute);
 
   exit();
 }
