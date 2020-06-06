@@ -9,17 +9,16 @@ int main(int argc, char *argv[])
   {
     printf(2, "date failed\n");
   }
-  if(r.minute+30>59)
+  if(r.minute>59)
 	{
-		r.hour += 6;
-		r.minute = r.minute+30-59;
+		r.hour += 1;
+		r.minute = r.minute-59;
 	}
 	else
 	{
-		r.hour += 5;
-		r.minute += 30;
+		r.hour += 19;
 	}
-	if(r.hour>=24)
+  if(r.hour>=24)
 		r.hour -= 24;
 	printf(1," %d:%d:%d\n",r.hour,r.minute,r.second);
 
