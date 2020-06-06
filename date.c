@@ -2,7 +2,8 @@
 #include "user.h"
 #include "date.h"
 
-int main(int argc, char *argv[])
+int 
+main(int argc, char *argv[])
 {
   struct rtcdate r;
   if(date(&r))
